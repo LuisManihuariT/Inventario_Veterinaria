@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resource/css/login.css">
+</head>
+<body>
+    <div class="fondo-background">
+        <div class="login-contenedor">
+            <div class="login-box">
+                <div class="usuario-icono-contenedor">
+                    <img src="img/usuario.svg" class="icono usuario-icono" alt="">
+                </div>
+                <form action="conexion_bd/validar_login.php" method="POST">
+                    <div class="caja-input">
+                        <label for="usuario">Usuario:</label>
+                        <input type="text" id="usuario" name="usuario" class="input-field" placeholder="Ingrese su usuario" required>
+                    </div>
+        
+                    <div class="caja-input">
+                        <label for="contraseña">Contraseña:</label>
+                        <input type="password" id="contraseña" name="contraseña" class="input-field" placeholder="***********" required>
+                    </div>
+        
+                    <a href="#" class="olvide-contraseña">¿Olvidé mi contraseña?</a>
+        
+                    <button type="submit" class="login-boton">Iniciar sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

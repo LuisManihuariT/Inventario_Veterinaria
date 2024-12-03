@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Productos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../resource/css/productos.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Inventario de Productos</h1>
+    <div class="filter-bar">
+        <input type="text" id="buscarProducto" placeholder="Buscar producto">
+        <button id="buscarBtn">Buscar</button>
+        
+        <div class="filter-group">
+            <label for="categoria">Categoría:</label>
+            <select id="categoria">
+                <option value="" disabled selected>Categoría</option>
+                <option value="Alimentos">Alimentos</option>
+                <option value="Accesorios">Accesorios y equipamiento</option>
+                <option value="Transportes">Transportes y dormitorios</option>
+                <option value="Higiene">Higiene y Limpieza</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="stock">Stock:</label>
+            <div class="stock-dropdown">
+                <select id="stock" class="stock-select">
+                    <option value="" disabled selected>No seleccionado</option>
+                    <option value="range">Especificar rango</option>
+                </select>
+                <div id="stockDropdown" class="dropdown-content">
+                    <div class="range-input">
+                        <label for="stockLow">Stock más bajo:</label>
+                        <input type="number" id="stockLow" placeholder="Ej: 10">
+                    </div>
+                    <div class="range-input">
+                        <label for="stockHigh">Stock más alto:</label>
+                        <input type="number" id="stockHigh" placeholder="Ej: 50">
+                    </div>
+                    <button id="applyStockFilter">Mostrar</button>
+                </div>
+            </div>
+        </div>
+          
+        
+
+        <div class="filter-group">
+            <label for="orden">Ordenar por:</label>
+            <select id="orden">
+                <option value="" disabled selected>Ordenar por</option>
+                <option value="cantidadDesc">Cant. actual: De mayor a menor</option>
+                <option value="cantidadAsc">Cant. actual: De menor a mayor</option>
+                <option value="proveedorAZ">Proveedor: De A a Z</option>
+                <option value="proveedorZA">Proveedor: De Z a A</option>
+                <option value="precioDesc">Precio: De mayor a menor</option>
+                <option value="precioAsc">Precio: De menor a mayor</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="inventory-table">
+        <div class="column column-id">
+            <div class="header">ID</div>
+            <div class="cell">1</div>
+            <div class="cell">2</div>
+            <div class="cell">3</div>
+        </div>
+        <div class="column column-producto">
+            <div class="header">Producto</div>
+            <div class="cell">Rascador</div>
+            <div class="cell">Bola de estambre</div>
+            <div class="cell">Hierba gatuna</div>
+        </div>
+        <div class="column column-categoria">
+            <div class="header">Categoría</div>
+            <div class="cell">Accesorios</div>
+            <div class="cell">Juguetes</div>
+            <div class="cell">Hierbas</div>
+        </div>
+        <div class="column column-cant">
+            <div class="header">Cant. actual</div>
+            <div class="cell">15</div>
+            <div class="cell">30</div>
+            <div class="cell">20</div>
+        </div>
+        <div class="column column-precio">
+            <div class="header">Precio</div>
+            <div class="cell">S/.10</div>
+            <div class="cell">S/.5</div>
+            <div class="cell">S/.8</div>
+        </div>
+        <div class="column column-proveedor">
+            <div class="header">Proveedor</div>
+            <div class="cell">Proveedor A</div>
+            <div class="cell">Proveedor B</div>
+            <div class="cell">Proveedor C</div>
+        </div>
+        <div class="column column-detalles">
+            <div class="header">Detalles</div>
+            <div class="cell"><button class="details-button">+</button></div>
+            <div class="cell"><button class="details-button">+</button></div>
+            <div class="cell"><button class="details-button">+</button></div>
+        </div>
+    </div>
+</div>
+
+<div class="buttons">
+    <button class="add-product">Añadir Productos</button>
+    <button class="return">Regresar</button>
+</div>
+
+</body>
+</html>

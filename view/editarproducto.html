@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../resource/css/editarproducto.css">
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editar Producto</h2>
+            <hr class="modal-divider">
+            <form action="#" method="POST">
+                <div class="linea">
+                    <div class="espacio-caja">
+                        <label for="producto-id">ID:</label>
+                        <input type="text" id="producto-id" class="input-field" disabled>
+                    </div>
+                    <div class="espacio-caja">
+                        <label for="producto-categoria">Categoría:</label>
+                        <select id="producto-categoria" class="input-field">
+                            <option value="" disabled selected>Seleccionar categoría</option>
+                                <option value="1">Alimentos</option>
+                                <option value="2">Accesorios y equipamiento</option>
+                                <option value="3">Transportes y dormitorios</option>
+                                <option value="4">Higiene y Limpieza</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="espacio-caja">
+                    <label for="producto-nombre">Nombre:</label>
+                    <input type="text" id="producto-nombre" class="input-field">
+                </div>
+                <div class="linea">
+                    <div class="espacio-caja">
+                        <label for="producto-precio-compra">P. de compra:</label>
+                        <input type="text" id="producto-precio-compra" class="input-field">
+                    </div>
+                    <div class="espacio-caja">
+                        <label for="producto-precio-venta">P. de venta:</label>
+                        <input type="text" id="producto-precio-venta" class="input-field">
+                    </div>
+                </div>
+                <div class="linea">
+                    <div class="espacio-caja">
+                        <label for="producto-cantidad">Cantidad:</label>
+                        <input type="text" id="producto-cantidad" class="input-field">
+                    </div>
+                    <div class="espacio-caja">
+                        <label for="producto-stock-min">Stock min.:</label>
+                        <input type="text" id="producto-stock-min" class="input-field">
+                    </div>
+                </div>
+                <div class="espacio-caja">
+                    <label for="producto-proveedor">Proveedor:</label>
+                    <input type="text" id="producto-proveedor" class="input-field">
+                </div>
+                <div class="espacio-caja">
+                    <label for="producto-descripcion">Descripción:</label>
+                    <textarea id="producto-descripcion" class="textarea-field"></textarea>
+                </div>
+                <div class="espacio-caja">
+                    <label for="producto-imagen">Subir imagen:</label>
+                    <input type="file" id="producto-imagen" class="input-field">
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="modal-button agregar-button">Guardar</button>
+                    <button type="button" class="modal-button cancelar-button">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

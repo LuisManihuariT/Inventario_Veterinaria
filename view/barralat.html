@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Navegación Lateral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+        
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user-info">
+            <div class="avatar">
+                <img src="../img/admin.svg" alt="Avatar del Administrador">
+            </div>
+            <div class="user-details">
+                <h3>Administrador</h3>
+                <p>administrador@gmail.com</p>
+            </div>
+            <div class="icono-barra">
+                <img src="../img/barra.svg" alt="Botón para contraer barra" id="icono-sidebar">
+            </div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="inventario.php" data-text="Productos"><img src="../img/producto.svg" alt="Icono de productos"> <span>Productos</span></a></li>
+                <li><a href="#" data-text="Proveedores"><img src="../img/proveedores.svg" alt="Icono de proveedores"> <span>Proveedores</span></a></li>
+                <li><a href="compra.php" data-text="Pedidos"><img src="../img/pedidos.svg" alt="Icono de pedidos"> <span>Pedidos</span></a></li>
+                <li><a href="venta.php" data-text="Control de stock"><img src="../img/stock.svg" alt="Icono de stock"> <span>Control de stock</span></a></li>
+                <li><a href="reporte.php" data-text="Reportes"><img src="../img/reportes.svg" alt="Icono de reportes"> <span>Reportes</span></a></li>
+                <li><a href="#" data-text="Notificaciones"><img src="../img/notificaciones.svg" alt="Icono de notificaciones"> <span>Notificaciones</span></a></li>
+                <li><a href="#" data-text="Cuentas"><img src="../img/cuentas.svg" alt="Icono de cuentas"> <span>Cuentas</span></a></li>
+            </ul>
+        </div>        
+        <div class="logout">
+            <ul><li><a href="../conexion_bd/cerrar_sesion.php" data-text="Salir"><img src="../img/salir.svg" alt="Icono de salir"><span>Salir</span></a></li></ul>
+        </div>
+    </div>
+    <script src="../Models/barralat.js"></script>
+</body>
+</html>
