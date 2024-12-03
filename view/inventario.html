@@ -7,7 +7,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- El contenido del sidebar permanece igual -->
         <div class="sidebar">
             <div class="user-info"></div>
                 <div class="avatar">
@@ -121,5 +120,28 @@
 
     <script src="../Models/barralat.js"></script>
     <script src="../Models/inventario.js"></script>
+
+    <!-- Agregar este modal al final del body -->
+    <div id="advertenciaModal" class="message-container" style="display: none;">
+        <div class="close-button" onclick="cerrarModal()">×</div>
+        <div class="message-content">
+            <img src="../img/advertencia.svg" alt="advertencia" class="advertencia-image">
+            <p class="advertencia-title">¿Está seguro que quiere eliminar el producto?</p>
+            <p class="advertencia-subtitle">Un producto eliminado no se volverá a mostrar</p>
+            <button class="confirm-button" id="confirmarEliminar">Confirmar</button>
+        </div>
+    </div>
+
+    <div class="message-container">
+        <div class="close-button">×</div>
+        <div class="message-content">
+            <img src="../img/advertencia.svg" alt="advertencia" class="advertencia-image">
+            <p class="advertencia-title">¿Está seguro que quiere eliminar el producto?</p>
+            <p class="advertencia-subtitle">Un producto eliminado no se volverá a mostrar</p>
+            <button class="confirm-button">Confirmar</button>
+        </div>
+    </div>
+
+    <script src="../Models/advertencia.js"></script>
 </body>
 </html>

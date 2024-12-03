@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.contenedor {
+    width: 90%;
+    margin: 20px auto;
+    padding: 0 10%;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.barra-filtros {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #EBEBEB;
+    padding: 15px 4%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.grupo-filtro {
+    width: clamp(120px, 30%, 250px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.campo-fecha,
+.desplegable {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.boton-filtrar {
+    width: clamp(100px, 20%, 200px);
+    background-color: #EFC02C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.boton-filtrar:hover {
+    background-color: #D1A322;
+}
+
+.seccion-notificaciones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tarjeta-notificacion {
+    background-color: #fff;
+    border: 2px solid #EFC02C;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.encabezado-notificacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.tipo-notificacion {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #FF5B22;
+    word-wrap: break-word;
+    text-align: left;
+    max-width: 70%;
+}
+
+.categoria-notificacion {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #4C4C4C;
+    background-color: #EFC02C;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.fecha-notificacion {
+    font-size: 0.9rem;
+    color: #666;
+    white-space: nowrap;
+}
+
+.cuerpo-notificacion {
+    font-size: 0.9rem;
+    color: #2e2e2e;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.boton-atender {
+    background-color: #EFC02C;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.boton-atender:hover {
+    background-color: #D1A322;
+}
+
+.estado-atendido {
+    display: inline-block;
+    background-color: #4C4C4C;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}

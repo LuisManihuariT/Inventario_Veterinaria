@@ -2,27 +2,49 @@
 require_once("../conexion_bd/conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $categoria = $_POST['categoria'];
-    $precio_compra = $_POST['precio_compra'];
-    $precio_venta = $_POST['precio_venta'];
-    $stock_actual = $_POST['stock_actual'];
-    $stock_minimo = $_POST['stock_minimo'];
-    $codigo_producto = $_POST['codigo_producto'];
-    $fecha_vencimiento = $_POST['fecha_vencimiento'];
+    try {
+        // Obtener datos del formulario
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $categoria = $_POST['categoria'];
+        $precio_compra = $_POST['precio_compra'];
+        $precio_venta = $_POST['precio_venta'];
+        $stock_actual = $_POST['stock_actual'];
+        $stock_minimo = $_POST['stock_minimo'];
+        $proveedor = $_POST['proveedor'];
+        
+        // Generar código de producto automático (puedes modificar esta lógica)
+        $codigo_producto = 'PROD_' . time();
 
-    // Insertar en la base de datos
-    $sql = "INSERT INTO producto (Nombre, Descripcion, Categoria, Precio_Compra, Precio_Venta, Stock_Actual, Stock_Minimo, Codigo_Producto, Fecha_Vencimiento)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nombre, $descripcion, $categoria, $precio_compra, $precio_venta, $stock_actual, $stock_minimo, $codigo_producto, $fecha_vencimiento]);
+        // Insertar en la base de datos
+        $sql = "INSERT INTO producto (Nombre, Descripcion, Categoria, Precio_Compra, 
+                Precio_Venta, Stock_Actual, Stock_Minimo, Codigo_Producto) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            $nombre, $descripcion, $categoria, $precio_compra, 
+            $precio_venta, $stock_actual, $stock_minimo, $codigo_producto
+        ]);
 
-    // Redirigir a la página de inventario después de la inserción
-    header("Location: inventario.php");
-    exit;
+        // Si se especificó un proveedor, crear la relación en proveedor_producto
+        if (!empty($proveedor)) {
+            $sql_proveedor = "INSERT INTO proveedor_producto (ID_Proveedor, ID_Producto) 
+                             VALUES (?, LAST_INSERT_ID())";
+            $stmt = $pdo->prepare($sql_proveedor);
+            $stmt->execute([$proveedor]);
+        }
+
+        header("Location: inventario.php");
+        exit;
+    } catch (PDOException $e) {
+        $error = "Error al agregar el producto: " . $e->getMessage();
+    }
 }
+
+// Obtener lista de proveedores para el select
+$stmt = $pdo->query("SELECT ID_Proveedor, Nombre FROM proveedor");
+$proveedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -31,61 +53,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../resource/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../resource/css/agregarproducto.css">
 </head>
-<body class="fondo-background">
-    <div class="container bg-light p-4 rounded">
-        <h2 class="text-center my-4">Agregar Nuevo Producto</h2>
-        <form method="POST" action="">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+<body>
+    <div class="modal">
+        <div class="modal-content">
+            <a href="inventario.php" class="close-button">&times;</a>
+            <h2>Agregar Producto</h2>
+            <hr class="modal-divider">
+            
+            <?php if (isset($error)): ?>
+                <div class="mensaje-error"><?php echo $error; ?></div>
+            <?php endif; ?>
+
+            <form method="POST" action="">
+                <div class="linea">
+                    <div class="espacio-caja">
+                        <label for="producto-id">ID:</label>
+                        <input type="text" id="producto-id" class="input-field" disabled>
                     </div>
-                    <div class="mb-3">
-                        <label for="categoria" class="form-label">Categoría</label>
-                        <input type="text" class="form-control" id="categoria" name="categoria">
-                    </div>
-                    <div class="mb-3">
-                        <label for="precio_compra" class="form-label">Precio de Compra</label>
-                        <input type="number" step="0.01" class="form-control" id="precio_compra" name="precio_compra" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="stock_actual" class="form-label">Stock Actual</label>
-                        <input type="number" class="form-control" id="stock_actual" name="stock_actual" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="codigo_producto" class="form-label">Código del Producto</label>
-                        <input type="text" class="form-control" id="codigo_producto" name="codigo_producto">
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="precio_venta" class="form-label">Precio de Venta</label>
-                        <input type="number" step="0.01" class="form-control" id="precio_venta" name="precio_venta" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="stock_minimo" class="form-label">Stock Mínimo</label>
-                        <input type="number" class="form-control" id="stock_minimo" name="stock_minimo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fecha_vencimiento" class="form-label">Fecha de Vencimiento</label>
-                        <input type="date" class="form-control" id="fecha_vencimiento" name="fecha_vencimiento">
+                    <div class="espacio-caja">
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" name="categoria" class="input-field" required>
+                            <option value="" disabled selected>Seleccionar categoría</option>
+                            <option value="Alimentos">Alimentos</option>
+                            <option value="Accesorios">Accesorios y equipamiento</option>
+                            <option value="Transportes">Transportes y dormitorios</option>
+                            <option value="Higiene">Higiene y Limpieza</option>
+                        </select>
                     </div>
                 </div>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Agregar Producto</button>
-            </div>
-        </form>
+
+                <div class="espacio-caja">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" class="input-field" required>
+                </div>
+
+                <div class="linea">
+                    <div class="espacio-caja">
+                        <label for="precio_compra">P. de compra:</label>
+                        <input type="number" step="0.01" id="precio_compra" name="precio_compra" class="input-field" required>
+                    </div>
+                    <div class="espacio-caja">
+                        <label for="precio_venta">P. de venta:</label>
+                        <input type="number" step="0.01" id="precio_venta" name="precio_venta" class="input-field" required>
+                    </div>
+                </div>
+
+                <div class="linea">
+                    <div class="espacio-caja">
+                        <label for="stock_actual">Cantidad:</label>
+                        <input type="number" id="stock_actual" name="stock_actual" class="input-field" required>
+                    </div>
+                    <div class="espacio-caja">
+                        <label for="stock_minimo">Stock min.:</label>
+                        <input type="number" id="stock_minimo" name="stock_minimo" class="input-field" required>
+                    </div>
+                </div>
+
+                <div class="espacio-caja">
+                    <label for="proveedor">Proveedor:</label>
+                    <select id="proveedor" name="proveedor" class="input-field">
+                        <option value="">Seleccionar proveedor</option>
+                        <?php foreach ($proveedores as $proveedor): ?>
+                            <option value="<?php echo $proveedor['ID_Proveedor']; ?>">
+                                <?php echo htmlspecialchars($proveedor['Nombre']); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="espacio-caja">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" class="textarea-field"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="modal-button agregar-button">Agregar Producto</button>
+                    <a href="inventario.php" class="modal-button cancelar-button">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

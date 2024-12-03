@@ -23,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         echo "Usuario o contraseña incorrectos.";
+        header('Location: ../index.html');
+        exit();
     }
 } else {
     echo "Método de solicitud no válido.";

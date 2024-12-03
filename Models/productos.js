@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let stockRange = { min: 0, max: Infinity };
 
+    const advertenciaModal = document.getElementById("advertenciaModal");
+    let productoAEliminar = null;
+
     const renderTable = (filteredData) => {
         const tableBody = document.querySelector(".inventory-table");
         tableBody.innerHTML = "";
@@ -30,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="column column-precio">$${producto.precio}</div>
                 <div class="column column-proveedor">${producto.proveedor}</div>
                 <div class="column column-detalles">
-                    <button class="details-button">+</button>
+                    <button class="details-button" onclick="mostrarModal(${producto.id})">+</button>
                 </div>
             `;
             tableBody.innerHTML += row;
@@ -104,6 +107,26 @@ document.addEventListener("DOMContentLoaded", () => {
     buscarBtn.addEventListener("click", filterProducts);
     categoriaSelect.addEventListener("change", filterProducts);
     ordenarSelect.addEventListener("change", filterProducts);
+
+    window.mostrarModal = (id) => {
+        productoAEliminar = id;
+        advertenciaModal.style.display = "block";
+    };
+
+    window.cerrarModal = () => {
+        advertenciaModal.style.display = "none";
+        productoAEliminar = null;
+    };
+
+    document.getElementById("confirmarEliminar").addEventListener("click", () => {
+        if (productoAEliminar !== null) {
+            // Aquí puedes agregar la lógica para eliminar el producto
+            console.log(`Producto con ID ${productoAEliminar} eliminado`);
+            cerrarModal();
+            // Actualizar la tabla después de eliminar
+            filterProducts();
+        }
+    });
 
     renderTable(productos);
 });

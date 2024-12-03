@@ -17,44 +17,39 @@ body {
 }
 
 .container {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
+    display: flex; /* Configura el contenedor como un flexbox */
+    height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
 }
 
 .sidebar {
-    width: 250px;
-    min-width: auto;
-    position: fixed;
-    height: 100vh;
-    transition: width 0.3s ease;
-    z-index: 1000;
-    background-color: #fff;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    width: 15%; /* Define un ancho fijo para el sidebar */
+    min-width: 20%; /* Ancho mínimo para mantener legibilidad */
+    height: 100%; /* Asegura que ocupe toda la altura del contenedor */
+    background-color: #fff; /* Mantiene un fondo blanco */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Aplica una sombra sutil */
 }
 
-.derecha {
-    flex: 1;
-    margin-left: 250px;
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-    overflow-x: auto;
+.derecha{
+    flex-grow: 1; /* Ocupa el espacio restante del contenedor */
+    padding: 20px; /* Agrega espacio interno */
+    overflow-y: auto; /* Permite desplazamiento vertical si el contenido es extenso */
 }
+
+
 
 h1 {
     text-align: center;
 }
 
 .filter-bar {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
     align-items: center;
+    justify-content: space-around;
+    background-color: #EBEBEB;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    gap: 10px;
 }
 
 .filter-bar input, .filter-bar button, .filter-bar select {
@@ -78,8 +73,7 @@ h1 {
 .filter-group {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #buscarProducto {
@@ -164,6 +158,7 @@ h1 {
     background-color: #D1A322;
 }
 
+
 .input-group {
     display: flex;
     align-items: center;
@@ -217,29 +212,29 @@ h1 {
     display: block;
 }
 
+
 .inventory-table {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-top: 20px;
-    width: 100%;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    margin-top: 0;
     overflow-x: auto;
 }
 
 .column {
     background-color: #fff;
     border: 1px solid #EFC02C;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 5px;
+    border-radius: 11px;
+    flex: 1;
 }
 
 .header {
     background-color: #EFC02C;
-    color: white;
-    padding: 12px;
+    padding: 10px;
     font-weight: bold;
     text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .cell {
@@ -266,12 +261,6 @@ h1 {
     cursor: pointer;
 }
 
-.buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
 
 .edit, .delete{
     padding: 1px 2px;
@@ -297,6 +286,7 @@ h1 {
     width: 25px;
 }
 
+
 .add-product {
     background-color: #EFC02C;
 }
@@ -313,13 +303,33 @@ h1 {
     background-color: red;
 }
 
-.column-id { flex: 0 0 4.5%; }
-.column-producto { flex: 1 1 auto; }
-.column-precio { flex: 0 0 8%; }
-.column-categoria { flex: 0 0 20%; }
-.column-cant { flex: 0 0 8.5%; }
-.column-proveedor { flex: 0 0 15%; }
-.column-detalles { flex: 0 0 7%; }
+.column-id {
+    flex-basis: 4.5%;
+}
+
+.column-producto {
+    flex-basis: auto;
+}
+
+.column-precio {
+    flex-basis: 8%;
+}
+
+.column-categoria {
+    flex-basis: 20%;
+}
+
+.column-cant {
+    flex-basis: 8.5%;
+}
+
+.column-proveedor {
+    flex-basis: 15%;
+}
+
+.column-detalles {
+    flex-basis: 7%;
+}
 
 /** CSS DE LA BARRA LATERAL**/
 
@@ -375,6 +385,7 @@ h1 {
     display: none;
 }
 
+
 .user-details h3 {
     font-size: 19px;
     margin-bottom: 5px;
@@ -419,6 +430,7 @@ ul li a img {
     height: auto;
 }
 
+
 .logout {
     padding-bottom: 25px;
 }
@@ -431,6 +443,7 @@ ul li a img {
     color: #333;
     text-decoration: none;
 }
+
 
 .logout ul li a span {
     margin-left: 10px;
@@ -448,42 +461,70 @@ ul li a img {
     font-weight: bold;
 }
 
-@media (max-width: 1024px) {
-    .sidebar {
-        width: 70px;
-    }
-
-    .derecha {
-        margin-left: 70px;
-    }
-
-    .user-details, 
-    .menu ul li a span {
-        display: none;
-    }
-
-    .filter-bar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .filter-group {
-        width: 100%;
-    }
+/* Estilos para la advertencia */
+.message-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 320px;
+    padding: 20px;
+    border: 2px solid #d0d0d0;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-@media (max-width: 768px) {
-    .column {
-        min-width: 150px;
-    }
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #555555;
+}
 
-    .buttons {
-        flex-direction: column;
-    }
+.message-content {
+    margin-top: 15px;
+}
 
-    .add-product, 
-    .return {
-        width: 100%;
-        text-align: center;
-    }
+.advertencia-image {
+    width: 50px;
+    margin-bottom: 15px;
+}
+
+.advertencia-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #F8C100;
+    margin: 0 0 10px 0;
+}
+
+.advertencia-subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555555;
+    margin: 0 0 20px 0;
+}
+
+.confirm-button {
+    font-family: 'Quicksand', sans-serif;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #F8C100;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+    background-color: #D7A900;
 }

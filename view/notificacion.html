@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../resource/css/notificacion.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Notificaciones</h1>
+        <div class="barra-filtros">
+            <div class="grupo-filtro">
+                <label for="categoriaProducto">Categoría:</label>
+                <select id="categoriaProducto" class="desplegable">
+                    <option value="" disabled selected>Seleccionar categoría</option>
+                    <option value="alimentos">Alimentos</option>
+                    <option value="accesorios">Accesorios</option>
+                    <option value="medicamentos">Medicamentos</option>
+                    <option value="higiene">Higiene y limpieza</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label for="fechaInicio">Desde:</label>
+                <input type="date" id="fechaInicio" class="campo-fecha">
+            </div>
+            <div class="grupo-filtro">
+                <label for="fechaFin">Hasta:</label>
+                <input type="date" id="fechaFin" class="campo-fecha">
+            </div>
+            <button id="filtrarNotificaciones" class="boton-filtrar">Filtrar</button>
+        </div>
+
+        <div id="seccionNotificaciones" class="seccion-notificaciones">
+        </div>
+    </div>
+    <script src="../Models/notificacion.js"></script>
+</body>
+</html>

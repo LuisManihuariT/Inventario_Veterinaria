@@ -1,0 +1,254 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.container {
+    width: 75%;
+    margin: 20px auto;
+    padding-bottom: 80px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EBEBEB;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 50px;
+}
+
+.search-group {
+    width: clamp(230px, 80%, 340px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-bar input, .filter-bar select {
+    width: clamp(230px, 80%, 340px);
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+#buscarProducto {
+    width: clamp(150px, 70%, 250px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#buscarProductoBtn {
+    background-color: #4C4C4C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#categoria {
+    padding: 8px;
+    font-size: 1rem;
+    width: clamp(200px, 70%, 400px);
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.inventory-table {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.column {
+    background-color: #fff;
+    border: 1px solid #EFC02C;
+    border-radius: 8px;
+    flex: 1;
+}
+
+.header {
+    background-color: #EFC02C;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    color: #333;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.cell {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #EFC02C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+}
+
+.btn-ajustar {
+    padding: 5px 15px;
+    background-color: #4C4C4C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-ajustar:hover {
+    background-color: #333;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 15px 0;
+}
+
+.add-product, .return {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+
+.add-product {
+    background-color: #EFC02C;
+}
+
+.return {
+    background-color: #4C4C4C;
+}
+
+.add-product:hover {
+    background-color: #D1A322;
+}
+
+.return:hover {
+    background-color: #333;
+}
+
+.column-id {
+    flex-basis: 4%;
+}
+
+.column-producto {
+    flex-basis: 28%;
+}
+
+.column-stock {
+    flex-basis: 9%;
+}
+
+.column-minimo {
+    flex-basis: 9%;
+}
+
+.column-movimiento {
+    flex-basis: 22%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-guardar,
+.btn-cancelar {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-guardar {
+    background-color: #EFC02C;
+    color: white;
+}
+
+.btn-cancelar {
+    background-color: #4C4C4C;
+    color: white;
+}
+
+.mensaje-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}

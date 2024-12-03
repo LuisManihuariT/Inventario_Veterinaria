@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../resource/css/reportes.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Reportes</h1>
+        
+        <div id="mensaje-error" class="mensaje-error"></div>
+        
+        <div class="barra-filtros">
+            <div class="grupo-filtro">
+                <label for="fecha-inicio">Desde:</label>
+                <input type="date" id="fecha-inicio" class="entrada-fecha">
+            </div>
+            <div class="grupo-filtro">
+                <label for="fecha-fin">Hasta:</label>
+                <input type="date" id="fecha-fin" class="entrada-fecha">
+            </div>
+            <div class="grupo-filtro">
+                <label for="tipo-reporte">Tipo de reporte:</label>
+                <select id="tipo-reporte" class="desplegable">
+                    <option value="" disabled selected>Seleccionar tipo</option>
+                    <option value="ventas">Ventas</option>
+                    <option value="movimientos">Movimientos de stock</option>
+                    <option value="alertas">Alertas de stock</option>
+                </select>
+            </div>
+            <button id="boton-generar-reporte" class="boton-generar">
+                <span class="texto-boton">Generar Reporte</span>
+                <span class="indicador-carga" hidden>
+                    <i class="fas fa-spinner fa-spin"></i>
+                </span>
+            </button>
+        </div>
+
+        <div class="seccion-reportes">
+            <div class="resumen">
+                <div class="tarjeta-resumen">
+                    <h3>Total Ventas</h3>
+                    <p>S/. 12,345.67</p>
+                </div>
+                <div class="tarjeta-resumen">
+                    <h3>Entradas/Pendientes</h3>
+                    <p id="total-entradas">0</p>
+                </div>
+                <div class="tarjeta-resumen">
+                    <h3>Salidas/Atendidas</h3>
+                    <p id="total-salidas">0</p>
+                </div>
+            </div>
+
+            <div class="contenedor-grafica">
+                <canvas id="grafica-reporte"></canvas>
+            </div>
+
+            <div class="contenedor-tabla">
+                <table id="tabla-datos" class="tabla-reporte">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Cantidad</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-cuerpo">
+                        <!-- Se llenará dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="botones-exportar">
+                <button class="boton-exportar" data-tipo="pdf">
+                    <i class="fas fa-file-pdf"></i> Exportar PDF
+                </button>
+                <button class="boton-exportar" data-tipo="excel">
+                    <i class="fas fa-file-excel"></i> Exportar Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="../Models/reportes.js"></script>
+</body>
+</html>

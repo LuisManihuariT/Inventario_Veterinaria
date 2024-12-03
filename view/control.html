@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Stock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="control.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Control de Stock</h1>
+        <div class="filter-bar">
+            <div class="search-group">
+                <input type="text" id="buscarProducto" placeholder="Buscar producto">
+                <button id="buscarProductoBtn">Buscar</button>
+            </div>
+            <div class="filter-group">
+                <label for="categoria">Categoría:</label>
+                <select id="categoria">
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="alimentos">Alimentos</option>
+                    <option value="juguetes">Juguetes</option>
+                    <option value="higiene">Higiene</option>
+                    <option value="accesorios">Accesorios</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="inventory-table">
+            <div class="column column-id">
+                <div class="header">ID</div>
+                <div class="cell">1</div>
+                <div class="cell">2</div>
+                <div class="cell">3</div>
+            </div>
+            <div class="column column-producto">
+                <div class="header">Producto</div>
+                <div class="cell">Alimento para gatos</div>
+                <div class="cell">Collar</div>
+                <div class="cell">Juguete de peluche</div>
+            </div>
+            <div class="column column-stock">
+                <div class="header">Stock Actual</div>
+                <div class="cell">20</div>
+                <div class="cell">15</div>
+                <div class="cell">10</div>
+            </div>
+            <div class="column column-minimo">
+                <div class="header">Stock Mínimo</div>
+                <div class="cell">5</div>
+                <div class="cell">10</div>
+                <div class="cell">8</div>
+            </div>
+            <div class="column column-movimiento">
+                <div class="header">Movimiento</div>
+                <div class="cell">
+                    <button class="btn-ajustar">Ajustar</button>
+                </div>
+                <div class="cell">
+                    <button class="btn-ajustar">Ajustar</button>
+                </div>
+                <div class="cell">
+                    <button class="btn-ajustar">Ajustar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="add-product">Añadir Producto</button>
+        <button class="return">Regresar</button>
+    </div>
+</body>
+</html>

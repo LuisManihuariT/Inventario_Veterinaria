@@ -124,3 +124,27 @@ form label {
     display: grid;
     place-items: center;
 }
+
+.input-error {
+    border-color: #ff0000 !important;
+    background-color: #fff6f6;
+}
+
+.caja-input {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.mensaje-error {
+    position: absolute;
+    left: 0;
+    bottom: -18px;
+    width: 100%;
+    text-align: left;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #EFC02C;
+    box-shadow: 0 0 5px rgba(239, 192, 44, 0.3);
+}

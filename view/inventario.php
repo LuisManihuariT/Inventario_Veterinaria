@@ -39,9 +39,9 @@ $usuario = $_SESSION['usuario'];
                     <li><a href="inventario.php" data-text="Productos"><img src="../img/producto.svg" alt="Icono de productos"> <span>Productos</span></a></li>
                     <li><a href="reporte_compras_proveedor.php" data-text="Proveedores"><img src="../img/proveedores.svg" alt="Icono de proveedores"> <span>Proveedores</span></a></li>
                     <li><a href="compra.php" data-text="Pedidos"><img src="../img/pedidos.svg" alt="Icono de pedidos"> <span>Pedidos</span></a></li>
-                    <li><a href="venta.php" data-text="Control de stock"><img src="../img/stock.svg" alt="Icono de stock"> <span>Control de stock</span></a></li>
-                    <li><a href="reporte_movimientos_stock.php" data-text="Reportes"><img src="../img/reportes.svg" alt="Icono de reportes"> <span>Reportes</span></a></li>
-                    <li><a href="#" data-text="Notificaciones"><img src="../img/notificaciones.svg" alt="Icono de notificaciones"> <span>Notificaciones</span></a></li>
+                    <li><a href="control.php" data-text="Control de stock"><img src="../img/stock.svg" alt="Icono de stock"> <span>Control de stock</span></a></li>
+                    <li><a href="reportes.html" data-text="Reportes"><img src="../img/reportes.svg" alt="Icono de reportes"> <span>Reportes</span></a></li>
+                    <li><a href="notificacion.php" data-text="Notificaciones"><img src="../img/notificaciones.svg" alt="Icono de notificaciones"> <span>Notificaciones</span></a></li>
                     <li><a href="#" data-text="Cuentas"><img src="../img/cuentas.svg" alt="Icono de cuentas"> <span>Cuentas</span></a></li>
                 </ul>
             </div>        
@@ -119,6 +119,7 @@ $usuario = $_SESSION['usuario'];
                         </tr>
                     </thead>
                     <tbody>
+                        
                         <?php if (count($productos) > 0): ?>
                             <?php foreach ($productos as $producto): ?>
                                 <tr class = "column column-producto">
@@ -144,6 +145,7 @@ $usuario = $_SESSION['usuario'];
                                 <td colspan="11" class="text-center">No hay productos en el inventario.</td>
                             </tr>
                         <?php endif; ?>
+
                     </tbody>
                     <div class="buttons">
                     <a href="agregar_producto.php" class="add-product">Agregar Nuevo Producto</a>
